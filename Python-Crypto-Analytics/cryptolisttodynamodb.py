@@ -17,7 +17,7 @@ table = dynamodb.create_table(
     ProvisionedThroughput={'ReadCapacityUnits': 40,'WriteCapacityUnits': })
 table.meta.client.get_waiter('table_exists').wait(TableName='Coin_List')
 ##batch load info from cryptocompare to Coin_List table
-#table = dynamodb.Table('Coin_List')
-#for key in coinlist:
-#    with table.batch_writer() as batch:
-#        batch.put_item(Item=coinlist[key])
+table = dynamodb.Table('Coin_List')
+for key in coinlist:
+    with table.batch_writer() as batch:
+        batch.put_item(Item=coinlist[key])
