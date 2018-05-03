@@ -14,7 +14,7 @@ table = dynamodb.create_table(
     'KeyType': 'HASH'},{'AttributeName': 'CoinName','KeyType': 'RANGE'}],\
     AttributeDefinitions=[{'AttributeName': 'Symbol',\
     'AttributeType': 'S'},{'AttributeName': 'CoinName','AttributeType': 'S'},],\
-    ProvisionedThroughput={'ReadCapacityUnits': 40,'WriteCapacityUnits': })
+    ProvisionedThroughput={'ReadCapacityUnits': 40,'WriteCapacityUnits': 40})
 table.meta.client.get_waiter('table_exists').wait(TableName='Coin_List')
 ##batch load info from cryptocompare to Coin_List table
 table = dynamodb.Table('Coin_List')
